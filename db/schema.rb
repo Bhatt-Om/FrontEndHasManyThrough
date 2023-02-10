@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_10_110939) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_10_111757) do
+  create_table "groupmemberships", force: :cascade do |t|
+    t.integer "group_id"
+    t.integer "user_id"
+    t.integer "plane"
+    t.datetime "membershipdate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_groupmemberships_on_group_id"
+    t.index ["user_id"], name: "index_groupmemberships_on_user_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

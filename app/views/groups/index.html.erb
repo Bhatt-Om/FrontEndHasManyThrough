@@ -1,0 +1,9 @@
+<h1>Groups#index</h1>
+<p>Find me in app/views/groups/index.html.erb</p>
+
+<% @groups.each do |group| %>
+  <%= group.name %>
+  <%= link_to "Show", group_path(group) %>
+  <%= link_to "Edit", edit_group_path(group) %>
+  <%= link_to "Delete", group_path(group), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+<% end %>
