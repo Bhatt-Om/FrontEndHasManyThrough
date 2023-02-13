@@ -1,8 +1,17 @@
 <h1>Groupmemberships#index</h1>
 <p>Find me in app/views/groupmemberships/index.html.erb</p>
 
+<div>
+<%= link_to "log out",  destroy_user_session_path, data: {turbo_method: :delete , turbo_confirm: 'Are you sure?' } %>
+</div>
 
-<%= @memberships.each do |member| %>
-  <%= member.plane %>
-  <%= member.membershipdate %>
+<div>
+  <%= link_to "[ Create New Group ]", new_group_path %>
+  <%= link_to "[ Join New Group ]", new_groupmembership_path %>
+</div>
+<% @memberships.each do |member| %>
+
+  <h1><%= member.plane %></h1>
+  <h1><%= member.membershipdate %></h1>
+  <%= link_to "[ Delete ]", groupmembership_path(member), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
 <% end %>

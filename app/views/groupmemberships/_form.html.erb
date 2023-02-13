@@ -1,9 +1,10 @@
 <%= form_with model: @membership do |f| %>
 
+  <%= f.collection_select :group_id, Group.all, :id, :name %>
   <%= f.label :plane, "Plane" %>
-  <%= f.text_field :name %>
+  <%= f.select :plane, options_for_select(pre_define_planes) %>
 
-  <%= ft.datetime :membershipdate %>
+  <%= f.datetime_field :membershipdate %>
 
   <%= f.submit %>
   
